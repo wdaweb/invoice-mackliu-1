@@ -6,7 +6,7 @@
      <th id="months">年月份</th> 
      <td headers="months" class="title">
         <input type="number" name="year" min="<?=date("Y")-1;?>" max="<?=date("Y")+1;?>" step="1" value="<?=date("Y");?>">年
-        <select name="" id="">
+        <select name="period">
             <option value="1">01 ~ 02</option>
             <option value="2">03 ~ 04</option>
             <option value="3">05 ~ 06</option>
@@ -37,9 +37,9 @@
     <tr> 
      <th id="firstPrize" rowspan="2">頭獎</th> 
      <td headers="firstPrize" class="number">
-        <input type="number" name="first_prize" min="00000001" max="99999999"> 
-        <input type="number" name="first_prize" min="00000001" max="99999999"> 
-        <input type="number" name="first_prize" min="00000001" max="99999999"> 
+        <input type="number" name="first_prize[]" min="00000001" max="99999999"> 
+        <input type="number" name="first_prize[]" min="00000001" max="99999999"> 
+        <input type="number" name="first_prize[]" min="00000001" max="99999999"> 
       </td> 
     </tr> 
     <tr> 
@@ -68,9 +68,9 @@
     <tr> 
      <th id="addSixPrize">增開六獎</th> 
      <td headers="addSixPrize" class="number"> 
-        <input type="number" name="add_six_prize" min="001" max="999"> 
-        <input type="number" name="add_six_prize" min="001" max="999"> 
-        <input type="number" name="add_six_prize" min="001" max="999"> 
+        <input type="number" name="add_six_prize[]" min="001" max="999"> 
+        <input type="number" name="add_six_prize[]" min="001" max="999"> 
+        <input type="number" name="add_six_prize[]" min="001" max="999"> 
     </td> 
     </tr>  
    </tbody>
