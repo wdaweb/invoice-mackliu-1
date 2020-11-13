@@ -48,7 +48,6 @@
         if(isset($_GET['do'])){
 
             $file=$_GET['do'].".php";
-            echo $file;
             include $file;
 
 

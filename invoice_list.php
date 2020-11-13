@@ -1,4 +1,12 @@
+<?php
+include_once "base.php";
 
-發票清單
+$sql="select * from `invoices`";
 
+$rows=$pdo->query($sql)->fetchAll();
 
+foreach($rows as $row){
+echo $row['code'].$row['number']."<br>";
+}
+
+?>
