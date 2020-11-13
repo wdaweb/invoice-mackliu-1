@@ -74,7 +74,7 @@
     </td> 
     </tr>  
    </tbody>
-  </table>
+</table>
   <div class="text-center">
     <input type="submit" value="儲存" class="mx-2 btn btn-primary">
     <input type="reset" value="清空" class="mx-2 btn btn-warning">
