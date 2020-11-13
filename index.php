@@ -13,7 +13,7 @@
 <h3 class="text-center">統一發票紀錄與對獎</h3>
 
 <div class="container">
-    <div class="col-8 d-flex justify-content-between p-3 mx-auto border">
+    <div class="col-lg-8 col-md-12 d-flex justify-content-between p-3 mx-auto border">
     <?php
         $month=[
             1=>"1,2月",
@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    <div class="col-8 d-flex p-3 mx-auto border">
+    <div class="col-lg-8 col-md-12  d-flex p-3 mx-auto border">
     <?php
 
         if(isset($_GET['do'])){
