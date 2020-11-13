@@ -9,22 +9,58 @@
 </head>
 <body>
 
-<?php
 
-if(isset($_GET['do'])){
+<h3 class="text-center">統一發票紀錄與對獎</h3>
 
-    $file=$_GET['do'].".php";
+<div class="container">
+    <div class="col-8 d-flex justify-content-between p-3 mx-auto border">
+    <?php
+        $month=[
+            1=>"1,2月",
+            2=>"3,4月",
+            3=>"5,6月",
+            4=>"7,8月",
+            5=>"9,10月",
+            6=>"11,12月",
+        ];
 
-    include $file;
+        $m=ceil(date("m")/2);
+
+    ?>
+        <div class="text-center"><?=$month[$m];?></div>
+        <div class="text-center">
+            <a href="?do=invoice_list">當期發票</a>
+        </div>
+        <div class="text-center">
+            <a href="">對獎</a>
+        </div>
+        <div class="text-center">
+            <a href="">輸入獎號</a>
+        </div>
+        <div class="text-center">
+            <a href="index.php">回首頁</a>
+        </div>
+    </div>
+
+    <div class="col-8 d-flex p-3 mx-auto border">
+    <?php
+
+        if(isset($_GET['do'])){
+
+            $file=$_GET['do'].".php";
+            echo $file;
+            include $file;
 
 
-}else{
+        }else{
 
-    include "main.php";
-}
+            include "main.php";
+        }
 
-?>
+        ?>
+    </div>
 
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
