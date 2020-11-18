@@ -31,6 +31,8 @@ echo "<pre>";
 print_r($awards);
 echo "</pre>"; */
 
+$all_res=-1;
+
 foreach($awards as $award){
     switch($award['type']){
         case 1:
@@ -40,8 +42,7 @@ foreach($awards as $award){
             if($award['number']==$number){
                 echo "<br>號碼=".$number."<br>";
                 echo "<br>中了特別獎<br>";
-            }else{
-                echo "<br>特別獎沒中<br>";
+                $all_res=1;
             }
         break;
         case 2:
@@ -49,33 +50,43 @@ foreach($awards as $award){
             if($award['number']==$number){
                 echo "<br>號碼=".$number."<br>";
                 echo "中了特獎<br>";
-            }else{
-                echo "特獎沒中<br>";
+                $all_res=1;
             }
 
         break;
         case 3:
+            $res=-1;
             for($i=5;$i>=0;$i--){
                 $target=mb_substr($award['number'],$i,(8-$i),'utf8');
                 $mynumber=mb_substr($number,$i,(8-$i),'utf8');
 
                 if($target==$mynumber){
-                    echo "<br>號碼=".$number."<br>";
-                    echo "中了{$awardStr[$i]}獎<br>";
+                    
+                    $res=$i;
                 }else{
                     break;
                     //continue
                 }
             }
+            //判斷最後中的獎項
+            if($res!=-1){
+                echo "<br>號碼=".$number."<br>";
+                echo "中了{$awardStr[$res]}獎<br>";
+                $all_res=1;
+            }
         break;
         case 4:
             if($award['number']==mb_substr($number,5,3,'utf8')){
                 echo "<br>號碼=".$number."<br>";
+                $all_res=1;
                 echo "中了增開六獎";
             }
         break;
     }
 }
 
+if($all_res==-1){
+    echo "很可惜，都沒有中";
+}
 
 ?>
