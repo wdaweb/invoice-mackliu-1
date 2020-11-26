@@ -3,9 +3,10 @@ include_once "base.php";
 
 $period=ceil(date("m")/2);
 
-$sql="select * from `invoices` where period='$period' order by date desc";
+//$sql="select * from `invoices` where period='$period' order by date desc";
 
-$rows=$pdo->query($sql)->fetchAll();
+//$rows=$pdo->query($sql)->fetchAll();
+$rows=all('invoices',['period'=>$period],' order by date desc');
 
 ?>
 <div class='row justify-content-around' style="list-style-type:none;paddin:0">
