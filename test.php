@@ -15,7 +15,8 @@ function find($table,$id){
     }else{
         $sql=$sql . " id='$id' ";
     }
-    $row=$pdo->query($sql)->fetch();
+    $row=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+    //mysqli_fetch_assoc()
 
     return $row;
 }
@@ -66,8 +67,57 @@ function del($table,$id){
     return $row;
 }
 
-$def=['code'=>'GD'];
-echo del('invoices',$def);
+
+
+function update($table,$array){
+    global $pdo;
+    $sql="update $table set ";
+    foreach($array as $key => $value){
+        if($key!='id'){
+
+            $tmp[]=sprintf("`%s`='%s'",$key,$value);
+        }
+        //$tmp[]="`".$key."`='".$value."'";
+    }
+    $sql=$sql.implode(",",$tmp) . " where `id`='{$array['id']}'";
+    echo $sql;
+   // $pdo->exec($sql);
+}
+
+function insert($table,$array){
+    global $pdo;
+    $sql="insert into $table(`" . implode("`,`",array_keys($array)) . "`) values('".implode("','",$array)."')";
+
+
+    $pdo->exec($sql);
+}
+
+function save($table,$array){
+
+        if(isset($array['id'])){
+            //update
+            update($table,$array);
+        }else{
+            //insert
+            inset($table,$array);
+        }
+
+}
+/* $row=find('invoices',22);
+echo "<pre>";
+print_r($row);
+echo "</pre><br>";
+//update invoices set `code`='AA',`payment`='1' where `id`='22';
+$row['code']='AA';
+$row['payment']=1;
+
+update('invoices',$row); */
+
+$row="AAA";
+save('invoices',$row);
+
+/* $def=['code'=>'GD'];
+echo del('invoices',$def); */
 
 /* echo "<hr>";
 print_r(all('invoices'));
