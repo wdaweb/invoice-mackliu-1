@@ -1,7 +1,7 @@
 <?php
 include_once "../base.php";
 
-$sql="update 
+/* $sql="update 
         invoices 
       set 
         `code`='{$_POST['code']}',
@@ -9,9 +9,18 @@ $sql="update
         `date`='{$_POST['date']}',
         `payment`='{$_POST['payment']}' 
       where 
-        `id`='{$_POST['id']}'";
+        `id`='{$_POST['id']}'"; */
 
-$pdo->exec($sql);
+$row=find('invoices',$_POST['id']);
 
-header("location:../index.php?do=invoice_list");
+$row['code']=$_POST['code'];
+$row['number']=$_POST['number'];
+$row['date']=$_POST['date'];
+$row['payment']=$_POST['payment'];
+//$row['id']=$_POST['id'];
+
+save('invoices',$row);
+//$pdo->exec($sql);
+to("../index.php?do=invoice_list")
+//header("location:../index.php?do=invoice_list");
 ?>

@@ -8,9 +8,9 @@ echo "<pre>";
 print_r(array_keys($_POST));
 echo "</pre>";
 accept('number','發票號碼的欄位必填');
-
-$sql="insert into invoices (`".implode("`,`",array_keys($_POST))."`) values('".implode("','",$_POST)."')";
-echo $sql;
+save('invoices',$_POST);
+//$sql="insert into invoices (`".implode("`,`",array_keys($_POST))."`) values('".implode("','",$_POST)."')";
+//echo $sql;
 
 
 echo "新增完成";
